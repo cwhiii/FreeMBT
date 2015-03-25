@@ -95,14 +95,6 @@ void openDB() throws SQLException{
         statement.executeUpdate(makeTableString);
         
         
-        
-        ResultSet rs = statement.executeQuery("select * from units");
-        while(rs.next())
-        {
-          // read the result set
-          System.out.println("name = " + rs.getString("name"));
-          System.out.println("id = " + rs.getInt("id"));
-        }
       }
     catch(SQLException e)
     {
@@ -115,6 +107,53 @@ void openDB() throws SQLException{
 void updateDB() throws SQLException{
     statement.executeUpdate(updateDBMegaString);
     }
+
+ResultSet runQuery(String _dbQuery) throws SQLException{
+    //statement.executeUpdate(updateDBMegaString);
+    String aLine = ""; 
+    
+    ResultSet result = statement.executeQuery(_dbQuery);    //"SELECT * FROM units"
+    while(result.next()){
+        System.out.println("name = " + result.getString("name"));
+        }
+    
+    return result;
+    }
+
+
+
+
+
+void  addUnitUpgrades(java.awt.Choice _ioChoice, java.awt.List _ioList) throws SQLException{
+    ResultSet result = statement.executeQuery("SELECT * FROM units");    //"SELECT * FROM units"
+    while(result.next()){
+        _ioChoice.addItem(result.getString("name")+"   -   "+result.getString("id"));
+        _ioList.addItem(result.getString("name")+"   -   "+result.getString("id"));
+        }
+    }
+
+
+            
+            
+
+
+
+
+
+
+int countUnits(String _dbQuery) throws SQLException{
+    //statement.executeUpdate(updateDBMegaString);
+    int count = 0;
+    ResultSet result = statement.executeQuery(_dbQuery);    //"SELECT * FROM units"
+    while(result.next()){
+        System.out.println("Counted! name = " + result.getString("name"));
+        count++;
+        }
+    
+    return count;
+    }
+
+
 
 void closeDB(){
     try

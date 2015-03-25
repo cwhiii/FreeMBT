@@ -298,7 +298,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="list2" min="-2" pref="175" max="-2" attributes="0"/>
+                      <Component id="unitPickList" min="-2" pref="175" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="623" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -313,7 +313,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="list2" max="32767" attributes="0"/>
+                              <Component id="unitPickList" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -1680,9 +1680,9 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="java.awt.List" name="list2">
+            <Component class="java.awt.List" name="unitPickList">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="list2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="unitPickListActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

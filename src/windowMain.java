@@ -154,7 +154,7 @@ public class windowMain extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        list2 = new java.awt.List();
+        unitPickList = new java.awt.List();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
@@ -1207,9 +1207,9 @@ public class windowMain extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        list2.addActionListener(new java.awt.event.ActionListener() {
+        unitPickList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                list2ActionPerformed(evt);
+                unitPickListActionPerformed(evt);
             }
         });
 
@@ -1219,7 +1219,7 @@ public class windowMain extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(list2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(unitPickList, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1232,7 +1232,7 @@ public class windowMain extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(list2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(unitPickList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -2434,9 +2434,9 @@ public class windowMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_unit_attackActionPerformed
 
-    private void list2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2ActionPerformed
+    private void unitPickListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitPickListActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_list2ActionPerformed
+    }//GEN-LAST:event_unitPickListActionPerformed
 
     private void unit_helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_helpActionPerformed
         // TODO add your handling code here:
@@ -2486,17 +2486,13 @@ public class windowMain extends javax.swing.JFrame {
         }
     
     void populateObsoleteByList(){
-        System.out.println("Populating Units for Obsolete slection..."); 
-        
-        unit_obsoleteBy.addItem("ATPT");
-        unit_obsoleteBy.addItem("ATST");
-        
-        
+        System.out.println("Populating Units for Obsolete slection...");         
         try {
+            String allUnits = "SELECT * FROM units";
             DBHandler db = new DBHandler();
-            
+            ResultSet result = db.runQuery(allUnits);
+            db.addUnitUpgrades(unit_obsoleteBy, unitPickList);
             } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
-        
         }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2688,12 +2684,12 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField53;
     private javax.swing.JTextField jTextField54;
     private javax.swing.JTextField jTextField55;
-    private java.awt.List list2;
     private javax.swing.JButton populateObsolete;
     private javax.swing.JButton populateTechs;
     private java.awt.TextField textField3;
     private java.awt.TextField textField4;
     private javax.swing.JCheckBox unitIsTransport;
+    private java.awt.List unitPickList;
     private javax.swing.JPanel unitTransportPanel;
     private javax.swing.JTextField unit_Gold;
     private javax.swing.JLabel unit_Gold2;
