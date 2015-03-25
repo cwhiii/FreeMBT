@@ -153,7 +153,7 @@ public class windowMain extends javax.swing.JFrame {
         unit_help = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        unitDisplayCase = new javax.swing.JTextArea();
         unitPickList = new java.awt.List();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -1187,11 +1187,11 @@ public class windowMain extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(UnitsInputPanel);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Select a Unit from the list on the left \nfor it to be displayed here.");
-        jScrollPane2.setViewportView(jTextArea1);
+        unitDisplayCase.setEditable(false);
+        unitDisplayCase.setColumns(20);
+        unitDisplayCase.setRows(5);
+        unitDisplayCase.setText("Select a Unit from the list on the left \nfor it to be displayed here.");
+        jScrollPane2.setViewportView(unitDisplayCase);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -2435,7 +2435,25 @@ public class windowMain extends javax.swing.JFrame {
     }//GEN-LAST:event_unit_attackActionPerformed
 
     private void unitPickListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitPickListActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Clear it.
+            unitDisplayCase.setText(null);
+            System.out.println();
+            
+            
+            //YAHere
+            //This block to fetch:
+
+            String huntingFor = "SELECT * FROM units WHERE name = '"+unitPickList.getSelectedItem()+"'";
+            DBHandler db = new DBHandler();
+            
+            
+        //Fill it.
+            unitDisplayCase.append(db.returnEntry(huntingFor));    
+        } catch (SQLException ex) {
+            Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
     }//GEN-LAST:event_unitPickListActionPerformed
 
     private void unit_helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_helpActionPerformed
@@ -2447,7 +2465,12 @@ public class windowMain extends javax.swing.JFrame {
     }//GEN-LAST:event_populateTechsActionPerformed
 
     private void populateObsoleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_populateObsoleteActionPerformed
-        populateObsoleteByList();
+        System.out.println("Populating Units for all slections...");         
+        try {
+            String allUnits = "SELECT * FROM units";
+            DBHandler db = new DBHandler();
+            db.addUnitUpgrades(unit_obsoleteBy, unitPickList);
+            } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
     }//GEN-LAST:event_populateObsoleteActionPerformed
 
     /**
@@ -2484,16 +2507,7 @@ public class windowMain extends javax.swing.JFrame {
                 }
             });
         }
-    
-    void populateObsoleteByList(){
-        System.out.println("Populating Units for Obsolete slection...");         
-        try {
-            String allUnits = "SELECT * FROM units";
-            DBHandler db = new DBHandler();
-            ResultSet result = db.runQuery(allUnits);
-            db.addUnitUpgrades(unit_obsoleteBy, unitPickList);
-            } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
-        }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel UnitsInputPanel;
@@ -2662,7 +2676,6 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane12;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField26;
@@ -2688,6 +2701,7 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JButton populateTechs;
     private java.awt.TextField textField3;
     private java.awt.TextField textField4;
+    private javax.swing.JTextArea unitDisplayCase;
     private javax.swing.JCheckBox unitIsTransport;
     private java.awt.List unitPickList;
     private javax.swing.JPanel unitTransportPanel;

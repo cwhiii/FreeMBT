@@ -127,8 +127,8 @@ ResultSet runQuery(String _dbQuery) throws SQLException{
 void  addUnitUpgrades(java.awt.Choice _ioChoice, java.awt.List _ioList) throws SQLException{
     ResultSet result = statement.executeQuery("SELECT * FROM units");    //"SELECT * FROM units"
     while(result.next()){
-        _ioChoice.addItem(result.getString("name")+"   -   "+result.getString("id"));
-        _ioList.addItem(result.getString("name")+"   -   "+result.getString("id"));
+        _ioChoice.addItem(result.getString("name"));    //+"   -   "+result.getString("id"));
+        _ioList.addItem(result.getString("name"));    //+"   -   "+result.getString("id"));
         }
     }
 
@@ -138,11 +138,18 @@ void  addUnitUpgrades(java.awt.Choice _ioChoice, java.awt.List _ioList) throws S
 
 
 
-
+String returnEntry(String _dbQuery) throws SQLException{
+    ResultSet result = statement.executeQuery(_dbQuery);    
+    String out = ""; 
+    while(result.next()){
+        out += result.getString("id") + "\n";
+        out += result.getString("name");
+        }
+    return out;
+    }
 
 
 int countUnits(String _dbQuery) throws SQLException{
-    //statement.executeUpdate(updateDBMegaString);
     int count = 0;
     ResultSet result = statement.executeQuery(_dbQuery);    //"SELECT * FROM units"
     while(result.next()){
