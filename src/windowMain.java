@@ -111,7 +111,8 @@ public class windowMain extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        populateTechs = new javax.swing.JButton();
+        populateObsolete = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         unit_classes = new javax.swing.JLabel();
         jCheckBox3 = new javax.swing.JCheckBox();
@@ -735,7 +736,19 @@ public class windowMain extends javax.swing.JFrame {
 
         jLabel18.setText("Type of unit (Small land, Missile, etc.)");
 
-        jToggleButton1.setText("jToggleButton1");
+        populateTechs.setText("Populate Techs");
+        populateTechs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                populateTechsActionPerformed(evt);
+            }
+        });
+
+        populateObsolete.setText("Populate Units");
+        populateObsolete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                populateObsoleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -764,9 +777,12 @@ public class windowMain extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jToggleButton1))
-                    .addComponent(jCheckBox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(populateTechs))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jCheckBox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(populateObsolete))
                     .addComponent(jLabel9)
                     .addComponent(jLabel17)
                     .addComponent(jLabel18))
@@ -795,14 +811,16 @@ public class windowMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1))
+                        .addComponent(jCheckBox1)
+                        .addComponent(populateTechs))
                     .addComponent(unit_requiredTech, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(unit_obsoleteBy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox2)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCheckBox2)
+                        .addComponent(populateObsolete))
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1141,7 +1159,7 @@ public class windowMain extends javax.swing.JFrame {
                         .addGroup(UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(unitTransportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(unitIsTransport))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         UnitsInputPanelLayout.setVerticalGroup(
             UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1179,7 +1197,7 @@ public class windowMain extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1204,7 +1222,7 @@ public class windowMain extends javax.swing.JFrame {
                 .addComponent(list2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -1220,7 +1238,7 @@ public class windowMain extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1212, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane12.addTab("Units", jPanel1);
@@ -2346,10 +2364,7 @@ public class windowMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void button_BuildUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BuildUnitActionPerformed
-        System.out.println("Opening DB...");
-        
-        // Edit.
-        
+        System.out.println("Building Unit: "+unit_ID+"...");
         UnitHandler someUnit = new UnitHandler();
         someUnit.compileUnit( 
                 unit_ID.getText(),
@@ -2427,6 +2442,14 @@ public class windowMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_unit_helpActionPerformed
 
+    private void populateTechsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_populateTechsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_populateTechsActionPerformed
+
+    private void populateObsoleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_populateObsoleteActionPerformed
+        populateObsoleteByList();
+    }//GEN-LAST:event_populateObsoleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2454,16 +2477,26 @@ public class windowMain extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-        
-        
-        
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() { 
                 new windowMain().setVisible(true);
                 }
             });
+        }
+    
+    void populateObsoleteByList(){
+        System.out.println("Populating Units for Obsolete slection..."); 
+        
+        unit_obsoleteBy.addItem("ATPT");
+        unit_obsoleteBy.addItem("ATST");
+        
+        
+        try {
+            DBHandler db = new DBHandler();
+            
+            } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
+        
         }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2655,8 +2688,9 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField53;
     private javax.swing.JTextField jTextField54;
     private javax.swing.JTextField jTextField55;
-    private javax.swing.JToggleButton jToggleButton1;
     private java.awt.List list2;
+    private javax.swing.JButton populateObsolete;
+    private javax.swing.JButton populateTechs;
     private java.awt.TextField textField3;
     private java.awt.TextField textField4;
     private javax.swing.JCheckBox unitIsTransport;

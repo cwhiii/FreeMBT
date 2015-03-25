@@ -15,6 +15,7 @@ public class DBHandler
     String makeTableString;
     
 DBHandler() throws SQLException{
+    System.out.println("Opening DB...");
     makeTableString = "create table units (" +
                 "\"id\" TEXT,"  +
                 "\"name\" TEXT,"  +
@@ -73,7 +74,7 @@ void buildAUnit(UnitHandler _unHan) throws SQLException{
 
 void openDB() throws SQLException{
     try {
-        System.out.println("Attempoting to open DB...");
+        System.out.println("Attempting to access database...");
         // load the sqlite-JDBC driver using the current class loader
         Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException ex) {
