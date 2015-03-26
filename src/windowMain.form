@@ -1017,7 +1017,7 @@
                                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="unit_class" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="unit_Name" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="unit_name" alignment="0" max="32767" attributes="0"/>
                                               <Component id="unit_ID" alignment="0" pref="200" max="32767" attributes="0"/>
                                               <Component id="unit_obsoleteBy" alignment="0" max="32767" attributes="0"/>
                                           </Group>
@@ -1080,7 +1080,7 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="unit_Name" min="-2" max="-2" attributes="0"/>
+                                              <Component id="unit_name" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1134,12 +1134,12 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="unit_classActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="java.awt.TextField" name="unit_Name">
+                        <Component class="java.awt.TextField" name="unit_name">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="X-Wing"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="unit_NameActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="unit_nameActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="java.awt.TextField" name="unit_ID">

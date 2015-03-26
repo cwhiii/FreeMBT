@@ -101,7 +101,7 @@ public class windowMain extends javax.swing.JFrame {
         unit_requiredTech = new java.awt.Choice();
         unit_obsoleteBy = new java.awt.Choice();
         unit_class = new javax.swing.JTextField();
-        unit_Name = new java.awt.TextField();
+        unit_name = new java.awt.TextField();
         unit_ID = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -717,10 +717,10 @@ public class windowMain extends javax.swing.JFrame {
             }
         });
 
-        unit_Name.setText("X-Wing");
-        unit_Name.addActionListener(new java.awt.event.ActionListener() {
+        unit_name.setText("X-Wing");
+        unit_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unit_NameActionPerformed(evt);
+                unit_nameActionPerformed(evt);
             }
         });
 
@@ -778,7 +778,7 @@ public class windowMain extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(unit_class, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(unit_Name, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(unit_name, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(unit_ID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(unit_obsoleteBy, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
@@ -826,7 +826,7 @@ public class windowMain extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(unit_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(unit_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2248,7 +2248,7 @@ public class windowMain extends javax.swing.JFrame {
         System.out.println("Building Unit: "+unit_ID+"...");
         Unit uni1 = new Unit(
                 unit_ID.getText(),
-                unit_Name.getText(),
+                unit_name.getText(),
                 unit_class.getText(),
                 "Filler: ReqTech",          //unit_requiredTech.getText(),                
                 "Filler: ObsTech",          //unit_obsoleteBy.getText()), 
@@ -2276,31 +2276,12 @@ public class windowMain extends javax.swing.JFrame {
                 "Filler: Roles",          //unit_roles.getText(),
                 unit_help.getText()
             );
+    try {
+        DBHandler db = new DBHandler();
+        db.buildAUnit(uni1);
+        } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
         
-        
-        try {
-            DBHandler db = new DBHandler();
-            db.buildAUnit(uni1);
-            
-            } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //Old: 
-        /*
-        try {
-            someUnit.buildUnit();
-            } catch (IOException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
-        */
-        
-        
-                
+    refreshUnitsLists();
     }//GEN-LAST:event_button_BuildUnitActionPerformed
 
     private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
@@ -2310,7 +2291,7 @@ public class windowMain extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Unit uni0 = new Unit( 
                 unit_ID.getText(),
-                unit_Name.getText(),
+                unit_name.getText(),
                 unit_class.getText(),
                 "Filler: ReqTech",          //unit_requiredTech.getText(),                
                 "Filler: ObsTech",          //unit_obsoleteBy.getText()), 
@@ -2349,20 +2330,16 @@ public class windowMain extends javax.swing.JFrame {
 
     private void unitPickListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitPickListActionPerformed
         try {
-            // Clear it.
+            // Clear display area.
             unitDisplayCase.setText(null);
-            System.out.println();
-            //YAHere
-            //String huntingFor = "SELECT * FROM units WHERE name = '"+unitPickList.getSelectedItem()+"'";
             DBHandler db = new DBHandler();
-            //Fill it.
-
+            //Fill  display area.
             unitDisplayCase.append(db.fetchUnitFromDB(unitPickList.getSelectedItem()).getFieldsAsView());
-
-            //unitDisplayCase.append(db.fetchUnitFromDB(unitPickList.getSelectedItem()).allFieldsAsCSV);
-
+            
+            //TODO: Load all the fields with the data for the currently selected unit.
+            //YAHere
+            
         } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
-
     }//GEN-LAST:event_unitPickListActionPerformed
 
     private void unit_helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_helpActionPerformed
@@ -2422,12 +2399,7 @@ public class windowMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void populateObsoleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_populateObsoleteActionPerformed
-        System.out.println("Populating Units for all slections...");
-        try {
-            String allUnits = "SELECT * FROM units";
-            DBHandler db = new DBHandler();
-            db.addUnitUpgrades(unit_obsoleteBy, unitPickList);
-        } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
+        refreshUnitsLists();
     }//GEN-LAST:event_populateObsoleteActionPerformed
 
     private void populateTechsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_populateTechsActionPerformed
@@ -2438,9 +2410,9 @@ public class windowMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_unit_IDActionPerformed
 
-    private void unit_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_NameActionPerformed
+    private void unit_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_unit_NameActionPerformed
+    }//GEN-LAST:event_unit_nameActionPerformed
 
     private void unit_classActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_classActionPerformed
         // TODO add your handling code here:
@@ -2540,7 +2512,20 @@ public class windowMain extends javax.swing.JFrame {
             unit_transportCap.setVisible(false);
         }
     }//GEN-LAST:event_unitIsTransportStateChanged
-
+    void refreshUnitsLists(){
+    System.out.println("Populating Units for all slections...");
+        try {
+            //First clear out anything in unitPickList.
+            unitPickList.removeAll();
+            
+            // Now go find units in DB and repopulate.
+            String allUnits = "SELECT * FROM units";
+            DBHandler db = new DBHandler();
+            db.refreshUnitsDisplays(unit_obsoleteBy, unitPickList);
+        } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -2778,7 +2763,6 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JTextField unit_Gold;
     private javax.swing.JLabel unit_Gold2;
     private java.awt.TextField unit_ID;
-    private java.awt.TextField unit_Name;
     private javax.swing.JTextField unit_attack;
     private javax.swing.JTextField unit_class;
     private javax.swing.JLabel unit_classes;
@@ -2795,6 +2779,7 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JTextField unit_move;
     private javax.swing.JTextField unit_moveSound;
     private javax.swing.JTextField unit_moveSoundAlt;
+    private java.awt.TextField unit_name;
     private java.awt.Choice unit_obsoleteBy;
     private javax.swing.JTextField unit_popCost;
     private java.awt.Choice unit_requiredTech;

@@ -5,7 +5,7 @@
 public class Unit {
     // Freeciv fields:
     public String id;
-    public String name;
+    public String unitName;
     public String unitClass;
     public String tech_req;      
     public String obsolete_by;   
@@ -43,9 +43,7 @@ public class Unit {
     public String allFieldsAsCSV;
     
     
-    Unit(){
-        
-        }
+    Unit(){}
     Unit(
             String _id, 
             String _name, 
@@ -76,7 +74,7 @@ public class Unit {
             String _roles, 
             String _help){
         id =                _id; 
-        name =              _name; 
+        unitName =              _name; 
         unitClass =         _class; 
         tech_req =          _techReq; 
         obsolete_by =       _obsolete; 
@@ -110,7 +108,7 @@ public class Unit {
 String buildFullString(){
     fullString = "";
     fullString +=  id;
-    fullString +=  name;
+    fullString +=  unitName;
     fullString +=  unitClass;
     fullString +=  tech_req;      
     fullString +=  obsolete_by;   
@@ -146,7 +144,7 @@ String buildFullString(){
 
 String getValuesAsCSV(){
     allFieldsAsCSV =   "'" + id +  "', ";   
-    allFieldsAsCSV +=  "'" + name +  "', ";   
+    allFieldsAsCSV +=  "'" + unitName +  "', ";   
     allFieldsAsCSV +=  "'" + unitClass +  "', ";   
     allFieldsAsCSV +=  "'" + tech_req +  "', ";   
     allFieldsAsCSV +=  "'" + obsolete_by +  "', ";   
@@ -184,7 +182,8 @@ String getFieldsAsView(){
     String fieldsViewString = "";
     
     fieldsViewString=   id + "\n";   
-    fieldsViewString+=  name + "\n";   
+    //FIXME: Name not showing up in Display Area.s
+    fieldsViewString+=  unitName + "\n";   
     fieldsViewString+=  unitClass + "\n";   
     fieldsViewString+=  tech_req + "\n";   
     fieldsViewString+=  obsolete_by + "\n";   

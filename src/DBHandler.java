@@ -61,7 +61,7 @@ void buildAUnit(Unit _unHan) throws SQLException{
     while(rs.next()){
           // read the result set
           System.out.println("id = " + rs.getInt("id"));
-          System.out.println("name = " + rs.getString("name"));
+          System.out.println("unitName = " + rs.getString("unitName"));
         }
     */
     }
@@ -158,7 +158,7 @@ Unit fetchUnitFromDB(String _name){
     return thisOne;
     }
 
-void  addUnitUpgrades(java.awt.Choice _ioChoice, java.awt.List _ioList) throws SQLException{
+void  refreshUnitsDisplays(java.awt.Choice _ioChoice, java.awt.List _ioList) throws SQLException{
     ResultSet result = statement.executeQuery("SELECT * FROM units");    //"SELECT * FROM units"
     while(result.next()){
         _ioChoice.addItem(result.getString("name"));    //+"   -   "+result.getString("id"));
