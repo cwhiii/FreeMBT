@@ -151,10 +151,11 @@ public class windowMain extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         unit_help = new javax.swing.JTextField();
-        jPanel10 = new javax.swing.JPanel();
+        unitPickList = new java.awt.List();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        unitDisplayCaseLables = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         unitDisplayCase = new javax.swing.JTextArea();
-        unitPickList = new java.awt.List();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
@@ -239,6 +240,7 @@ public class windowMain extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         button_BuildUnit = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -359,18 +361,17 @@ public class windowMain extends javax.swing.JFrame {
                             .addComponent(jCheckBox38))
                         .addGap(45, 45, 45)
                         .addGroup(unitTransportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(unitTransportPanelLayout.createSequentialGroup()
-                                .addComponent(jCheckBox41)
-                                .addGap(31, 31, 31)
-                                .addComponent(jCheckBox43)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBox40))
-                            .addComponent(jCheckBox44)))
+                            .addComponent(jCheckBox41)
+                            .addComponent(jCheckBox44))
+                        .addGap(7, 7, 7)
+                        .addGroup(unitTransportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox40)
+                            .addComponent(jCheckBox43)))
                     .addGroup(unitTransportPanelLayout.createSequentialGroup()
                         .addComponent(unit_transportCaplable)
                         .addGap(18, 18, 18)
                         .addComponent(unit_transportCap, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         unitTransportPanelLayout.setVerticalGroup(
             unitTransportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,12 +387,12 @@ public class windowMain extends javax.swing.JFrame {
                             .addComponent(jCheckBox37)
                             .addComponent(jCheckBox43)
                             .addComponent(jCheckBox41)
-                            .addComponent(jCheckBox40)
                             .addComponent(unit_transportCargo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(unitTransportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCheckBox38)
-                            .addComponent(jCheckBox44))))
+                            .addComponent(jCheckBox44)
+                            .addComponent(jCheckBox40))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -450,7 +451,7 @@ public class windowMain extends javax.swing.JFrame {
                     .addComponent(unit_upkeepShield)
                     .addComponent(unit_upkeepFood)
                     .addComponent(unit_Gold, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,9 +524,9 @@ public class windowMain extends javax.swing.JFrame {
 
         jLabel10.setText("Fuel");
 
-        jLabel14.setText("(Attack, Defence, HP, Firepower)");
+        jLabel14.setText("Attack, Defence, HP, Firepower");
 
-        jLabel16.setText("(Gold, Population)");
+        jLabel16.setText("Gold, Population");
 
         unit_move.setText("3");
 
@@ -565,7 +566,7 @@ public class windowMain extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(62, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(unit_move)
@@ -607,31 +608,41 @@ public class windowMain extends javax.swing.JFrame {
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        unit_graphicAlt.setText("Backup Picture");
+        unit_graphicAlt.setText("deathStar");
+        unit_graphicAlt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unit_graphicAltActionPerformed(evt);
+            }
+        });
 
-        unit_graphic.setText("Picture for unit");
+        unit_graphic.setText("deathStar");
 
         jLabel6.setText("Graphic");
 
         jLabel8.setText("Move Sound");
 
-        unit_moveSound.setText("Sound unit makes when moving");
+        unit_moveSound.setText("Vroom");
+        unit_moveSound.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unit_moveSoundActionPerformed(evt);
+            }
+        });
 
-        unit_moveSoundAlt.setText("Backup Sound ");
+        unit_moveSoundAlt.setText("-");
         unit_moveSoundAlt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unit_moveSoundAltActionPerformed(evt);
             }
         });
 
-        unit_fightSoundAlt.setText("Backup Sound ");
+        unit_fightSoundAlt.setText("-");
         unit_fightSoundAlt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unit_fightSoundAltActionPerformed(evt);
             }
         });
 
-        unit_fightSound.setText("Sound unit makes when fiighting");
+        unit_fightSound.setText("Zap");
 
         jLabel11.setText("Fight Sound");
 
@@ -655,7 +666,7 @@ public class windowMain extends javax.swing.JFrame {
                     .addComponent(unit_moveSoundAlt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(unit_graphicAlt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(unit_fightSoundAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -706,14 +717,14 @@ public class windowMain extends javax.swing.JFrame {
             }
         });
 
-        unit_Name.setText("ATAT");
+        unit_Name.setText("X-Wing");
         unit_Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unit_NameActionPerformed(evt);
             }
         });
 
-        unit_ID.setText("[unit_atat]");
+        unit_ID.setText("[unit_x-wing]");
         unit_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unit_IDActionPerformed(evt);
@@ -734,7 +745,7 @@ public class windowMain extends javax.swing.JFrame {
 
         jLabel17.setText("Human readable name");
 
-        jLabel18.setText("Type of unit (Small land, Missile, etc.)");
+        jLabel18.setText("Small land, Missile, etc.");
 
         populateTechs.setText("Populate Techs");
         populateTechs.addActionListener(new java.awt.event.ActionListener() {
@@ -766,26 +777,26 @@ public class windowMain extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(unit_class, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(unit_class, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(unit_Name, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(unit_ID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(unit_ID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(unit_obsoleteBy, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(unit_requiredTech, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(populateTechs))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel17)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jCheckBox2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(populateObsolete))
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18))
+                    .addComponent(jLabel18)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jCheckBox1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(populateTechs, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -795,33 +806,40 @@ public class windowMain extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(30, 30, 30))
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox1)
+                            .addComponent(populateTechs))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox2)
+                            .addComponent(populateObsolete)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(unit_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(unit_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(unit_class, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCheckBox1)
-                        .addComponent(populateTechs))
-                    .addComponent(unit_requiredTech, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(unit_obsoleteBy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCheckBox2)
-                        .addComponent(populateObsolete))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(unit_class, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(unit_requiredTech, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(unit_obsoleteBy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1027,7 +1045,7 @@ public class windowMain extends javax.swing.JFrame {
                                             .addComponent(jCheckBox30)
                                             .addComponent(jCheckBox29)
                                             .addComponent(jCheckBox24))))))
-                        .addGap(0, 92, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -1148,23 +1166,25 @@ public class windowMain extends javax.swing.JFrame {
                 .addGroup(UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
                     .addGroup(UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(UnitsInputPanelLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addGroup(UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(unitTransportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(unitIsTransport))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, UnitsInputPanelLayout.createSequentialGroup()
+                            .addGap(80, 80, 80)
+                            .addGroup(UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(unitIsTransport)
+                                .addComponent(unitTransportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         UnitsInputPanelLayout.setVerticalGroup(
             UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UnitsInputPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1182,36 +1202,29 @@ public class windowMain extends javax.swing.JFrame {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(UnitsInputPanel);
-
-        unitDisplayCase.setEditable(false);
-        unitDisplayCase.setColumns(20);
-        unitDisplayCase.setRows(5);
-        unitDisplayCase.setText("Select a Unit from the list on the left \nfor it to be displayed here.");
-        jScrollPane2.setViewportView(unitDisplayCase);
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         unitPickList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unitPickListActionPerformed(evt);
             }
         });
+
+        unitDisplayCaseLables.setEditable(false);
+        unitDisplayCaseLables.setBackground(new java.awt.Color(240, 240, 240));
+        unitDisplayCaseLables.setColumns(10);
+        unitDisplayCaseLables.setRows(5);
+        unitDisplayCaseLables.setText("ID\nName\nClass\nTech Requirement\nObsoleted By\nGraphic\nGraphic Alt\nSound, Move\nSound, Move Alt\nSound, Fight Alt\nSound, Fight \nBuild Cost\nPopulation Cost\nAttack\nDefence\nHitpoints\nFirepower\nMore Rate\nVision Radius\nTransportation Cap\nFuel\nUpkeep, Happiness\nUpkeep, Production\nUpkeep, Food\nUpkeep, Gold\nFlags\nRoles\nHelptext\n");
+        jScrollPane3.setViewportView(unitDisplayCaseLables);
+
+        unitDisplayCase.setEditable(false);
+        unitDisplayCase.setColumns(15);
+        unitDisplayCase.setRows(5);
+        unitDisplayCase.setText("Select a Unit from the list\non the far left for it to \nbe displayed here.");
+        jScrollPane2.setViewportView(unitDisplayCase);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1220,25 +1233,26 @@ public class windowMain extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(unitPickList, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(unitPickList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(unitPickList, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jTabbedPane12.addTab("Units", jPanel1);
@@ -1247,11 +1261,11 @@ public class windowMain extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
+            .addGap(0, 340, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1601, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel15.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1909,6 +1923,13 @@ public class windowMain extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         jMenu3.setText("File");
 
         jMenuItem7.setText("Load Ruleset");
@@ -2061,155 +2082,27 @@ public class windowMain extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(button_BuildUnit)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jTabbedPane12)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane12)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane12)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(button_BuildUnit))
+                    .addComponent(button_BuildUnit)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jCheckBox36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox36ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox36ActionPerformed
-
-    private void jCheckBox34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox34ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox34ActionPerformed
-
-    private void jCheckBox33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox33ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox33ActionPerformed
-
-    private void jCheckBox32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox32ActionPerformed
-
-    private void jCheckBox31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox31ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox31ActionPerformed
-
-    private void jCheckBox27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox27ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox27ActionPerformed
-
-    private void jCheckBox26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox26ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox26ActionPerformed
-
-    private void jCheckBox24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox24ActionPerformed
-
-    private void jCheckBox23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox23ActionPerformed
-
-    private void jCheckBox21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox21ActionPerformed
-
-    private void jCheckBox20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox20ActionPerformed
-
-    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox8ActionPerformed
-
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
-
-    private void unit_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_IDActionPerformed
-
-    private void unit_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_NameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_NameActionPerformed
-
-    private void unit_classActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_classActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_classActionPerformed
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
-
-    private void unit_moveSoundAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_moveSoundAltActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_moveSoundAltActionPerformed
-
-    private void unit_defenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_defenceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_defenceActionPerformed
-
-    private void unit_firepowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_firepowerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_firepowerActionPerformed
-
-    private void unit_popCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_popCostActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_popCostActionPerformed
-
-    private void unit_costActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_costActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_costActionPerformed
-
-    private void unit_upkeepFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_upkeepFoodActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_upkeepFoodActionPerformed
-
-    private void unit_upkeepShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_upkeepShieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_upkeepShieldActionPerformed
-
-    private void unit_GoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_GoldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_GoldActionPerformed
-
-    private void unit_upkeepHappyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_upkeepHappyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_upkeepHappyActionPerformed
-
-    private void unitTransportPanelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_unitTransportPanelPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unitTransportPanelPropertyChange
-
-    private void unitIsTransportPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_unitIsTransportPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unitIsTransportPropertyChange
-
-    private void unitIsTransportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitIsTransportActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_unitIsTransportActionPerformed
-
-    private void unitIsTransportStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_unitIsTransportStateChanged
-        if (unitIsTransport.isSelected()){
-            unitTransportPanel.setVisible(true);
-            unit_transportCap.setVisible(true);
-        }
-        else{
-            unitTransportPanel.setVisible(false);
-            unit_transportCap.setVisible(false);
-            }
-
-    }//GEN-LAST:event_unitIsTransportStateChanged
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -2347,31 +2240,18 @@ public class windowMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
-    private void jCheckBox37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox37ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox37ActionPerformed
-
-    private void jCheckBox38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox38ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox38ActionPerformed
-
-    private void jCheckBox40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox40ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox40ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void button_BuildUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BuildUnitActionPerformed
         System.out.println("Building Unit: "+unit_ID+"...");
-        UnitHandler someUnit = new UnitHandler();
-        someUnit.compileUnit( 
+        Unit uni1 = new Unit(
                 unit_ID.getText(),
                 unit_Name.getText(),
                 unit_class.getText(),
-                "Filler: ReqTech", //unit_requiredTech.getText(),                
-                "Filler: ObsTech", //unit_obsoleteBy.getText()), 
+                "Filler: ReqTech",          //unit_requiredTech.getText(),                
+                "Filler: ObsTech",          //unit_obsoleteBy.getText()), 
                 unit_graphic.getText(),
                 unit_graphicAlt.getText(),
                 unit_moveSound.getText(),
@@ -2388,18 +2268,19 @@ public class windowMain extends javax.swing.JFrame {
                 Integer.parseInt(unit_vision.getText()),             
                 Integer.parseInt(unit_fuel.getText()),             
                 Integer.parseInt(unit_transportCap.getText()),             
-                Integer.parseInt(unit_upkeepHappy.getText()),              //,
-                Integer.parseInt(unit_upkeepShield.getText()),              //,
-                Integer.parseInt(unit_upkeepFood.getText()),              //,
-                Integer.parseInt(unit_Gold.getText()),              //,
+                Integer.parseInt(unit_upkeepHappy.getText()),              
+                Integer.parseInt(unit_upkeepShield.getText()),              
+                Integer.parseInt(unit_upkeepFood.getText()),             
+                Integer.parseInt(unit_Gold.getText()),             
                 "Filler: Flags",          //unit_flags.getText(),
-                "Filler: Roles",                    //unit_roles.getText(),
+                "Filler: Roles",          //unit_roles.getText(),
                 unit_help.getText()
             );
         
+        
         try {
             DBHandler db = new DBHandler();
-            db.buildAUnit(someUnit);
+            db.buildAUnit(uni1);
             
             } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
         
@@ -2426,52 +2307,239 @@ public class windowMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem19ActionPerformed
 
-    private void unit_fightSoundAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_fightSoundAltActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_fightSoundAltActionPerformed
-
-    private void unit_attackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_attackActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_attackActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Unit uni0 = new Unit( 
+                unit_ID.getText(),
+                unit_Name.getText(),
+                unit_class.getText(),
+                "Filler: ReqTech",          //unit_requiredTech.getText(),                
+                "Filler: ObsTech",          //unit_obsoleteBy.getText()), 
+                unit_graphic.getText(),
+                unit_graphicAlt.getText(),
+                unit_moveSound.getText(),
+                unit_moveSoundAlt.getText(),
+                unit_fightSound.getText(),
+                unit_fightSoundAlt.getText(),
+                Integer.parseInt(unit_cost.getText()),
+                Integer.parseInt(unit_popCost.getText()),
+                Integer.parseInt(unit_attack.getText()),
+                Integer.parseInt(unit_defence.getText()),
+                Integer.parseInt(unit_hp.getText()),
+                Integer.parseInt(unit_firepower.getText()),
+                Integer.parseInt(unit_move.getText()),                
+                Integer.parseInt(unit_vision.getText()),             
+                Integer.parseInt(unit_fuel.getText()),             
+                Integer.parseInt(unit_transportCap.getText()),             
+                Integer.parseInt(unit_upkeepHappy.getText()),              
+                Integer.parseInt(unit_upkeepShield.getText()),              
+                Integer.parseInt(unit_upkeepFood.getText()),              
+                Integer.parseInt(unit_Gold.getText()),              
+                "Filler: Flags",          //unit_flags.getText(),
+                "Filler: Roles",          //unit_roles.getText(),
+                unit_help.getText()
+            );
+        System.out.println(uni0.buildFullString());
+        
+        
+        
+       
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void unitPickListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitPickListActionPerformed
         try {
             // Clear it.
             unitDisplayCase.setText(null);
             System.out.println();
-            
-            
             //YAHere
-            //This block to fetch:
-
-            String huntingFor = "SELECT * FROM units WHERE name = '"+unitPickList.getSelectedItem()+"'";
+            //String huntingFor = "SELECT * FROM units WHERE name = '"+unitPickList.getSelectedItem()+"'";
             DBHandler db = new DBHandler();
-            
-            
-        //Fill it.
-            unitDisplayCase.append(db.returnEntry(huntingFor));    
-        } catch (SQLException ex) {
-            Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                
+            //Fill it.
+
+            unitDisplayCase.append(db.fetchUnitFromDB(unitPickList.getSelectedItem()).getFieldsAsView());
+
+            //unitDisplayCase.append(db.fetchUnitFromDB(unitPickList.getSelectedItem()).allFieldsAsCSV);
+
+        } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
+
     }//GEN-LAST:event_unitPickListActionPerformed
 
     private void unit_helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_helpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_unit_helpActionPerformed
 
-    private void populateTechsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_populateTechsActionPerformed
+    private void jCheckBox36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox36ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_populateTechsActionPerformed
+    }//GEN-LAST:event_jCheckBox36ActionPerformed
+
+    private void jCheckBox34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox34ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox34ActionPerformed
+
+    private void jCheckBox33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox33ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox33ActionPerformed
+
+    private void jCheckBox32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox32ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox32ActionPerformed
+
+    private void jCheckBox31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox31ActionPerformed
+
+    private void jCheckBox27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox27ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox27ActionPerformed
+
+    private void jCheckBox26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox26ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox26ActionPerformed
+
+    private void jCheckBox24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox24ActionPerformed
+
+    private void jCheckBox23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox23ActionPerformed
+
+    private void jCheckBox21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox21ActionPerformed
+
+    private void jCheckBox20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox20ActionPerformed
+
+    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox8ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void populateObsoleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_populateObsoleteActionPerformed
-        System.out.println("Populating Units for all slections...");         
+        System.out.println("Populating Units for all slections...");
         try {
             String allUnits = "SELECT * FROM units";
             DBHandler db = new DBHandler();
             db.addUnitUpgrades(unit_obsoleteBy, unitPickList);
-            } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
+        } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
     }//GEN-LAST:event_populateObsoleteActionPerformed
+
+    private void populateTechsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_populateTechsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_populateTechsActionPerformed
+
+    private void unit_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_IDActionPerformed
+
+    private void unit_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_NameActionPerformed
+
+    private void unit_classActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_classActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_classActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void unit_fightSoundAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_fightSoundAltActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_fightSoundAltActionPerformed
+
+    private void unit_moveSoundAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_moveSoundAltActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_moveSoundAltActionPerformed
+
+    private void unit_moveSoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_moveSoundActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_moveSoundActionPerformed
+
+    private void unit_graphicAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_graphicAltActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_graphicAltActionPerformed
+
+    private void unit_attackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_attackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_attackActionPerformed
+
+    private void unit_defenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_defenceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_defenceActionPerformed
+
+    private void unit_firepowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_firepowerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_firepowerActionPerformed
+
+    private void unit_popCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_popCostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_popCostActionPerformed
+
+    private void unit_costActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_costActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_costActionPerformed
+
+    private void unit_upkeepFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_upkeepFoodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_upkeepFoodActionPerformed
+
+    private void unit_upkeepShieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_upkeepShieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_upkeepShieldActionPerformed
+
+    private void unit_GoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_GoldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_GoldActionPerformed
+
+    private void unit_upkeepHappyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_upkeepHappyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unit_upkeepHappyActionPerformed
+
+    private void unitTransportPanelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_unitTransportPanelPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unitTransportPanelPropertyChange
+
+    private void jCheckBox40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox40ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox40ActionPerformed
+
+    private void jCheckBox38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox38ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox38ActionPerformed
+
+    private void jCheckBox37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox37ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox37ActionPerformed
+
+    private void unitIsTransportPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_unitIsTransportPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unitIsTransportPropertyChange
+
+    private void unitIsTransportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitIsTransportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unitIsTransportActionPerformed
+
+    private void unitIsTransportStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_unitIsTransportStateChanged
+        if (unitIsTransport.isSelected()){
+            unitTransportPanel.setVisible(true);
+            unit_transportCap.setVisible(true);
+        }
+        else{
+            unitTransportPanel.setVisible(false);
+            unit_transportCap.setVisible(false);
+        }
+    }//GEN-LAST:event_unitIsTransportStateChanged
 
     /**
      * @param args the command line arguments
@@ -2521,6 +2589,7 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox1;
@@ -2656,7 +2725,6 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel15;
@@ -2673,6 +2741,7 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane12;
@@ -2702,6 +2771,7 @@ public class windowMain extends javax.swing.JFrame {
     private java.awt.TextField textField3;
     private java.awt.TextField textField4;
     private javax.swing.JTextArea unitDisplayCase;
+    private javax.swing.JTextArea unitDisplayCaseLables;
     private javax.swing.JCheckBox unitIsTransport;
     private java.awt.List unitPickList;
     private javax.swing.JPanel unitTransportPanel;

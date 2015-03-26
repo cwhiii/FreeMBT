@@ -5,17 +5,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 public class DBHandler
 {
-    
     Connection connection;
     Statement statement;
     String updateDBMegaString;
     String makeTableString;
     
 DBHandler() throws SQLException{
-    System.out.println("Opening DB...");
     makeTableString = "create table units (" +
                 "\"id\" TEXT,"  +
                 "\"name\" TEXT,"  +
@@ -54,11 +51,9 @@ DBHandler() throws SQLException{
     }
 
 
-void buildAUnit(UnitHandler _unHan) throws SQLException{
-    System.out.println("db.buildAUnit(): Values are: \n\n" + _unHan.getValues());
-    statement.executeUpdate("INSERT INTO units VALUES(" +
-        _unHan.getValues()
-        +")");
+void buildAUnit(Unit _unHan) throws SQLException{
+    System.out.println("db.buildAUnit(): Values are: \n\n" + _unHan.getValuesAsCSV());
+    statement.executeUpdate("INSERT INTO units VALUES(" + _unHan.getValuesAsCSV() +")");
     
     /*
     //statement.executeUpdate("insert into person values(2, 'yui')");
@@ -122,7 +117,46 @@ ResultSet runQuery(String _dbQuery) throws SQLException{
 
 
 
-
+Unit fetchUnitFromDB(String _name){
+    Unit thisOne = new Unit();
+    try {
+        ResultSet result = statement.executeQuery("SELECT * FROM units WHERE name = '" + _name + "'");    
+        while(result.next()){
+            thisOne.id = result.getString("id");
+            thisOne.unitClass = result.getString("class");
+            thisOne.tech_req = result.getString("tech_req");
+            thisOne.obsolete_by = result.getString("obsolete_by");
+            thisOne.graphic = result.getString("graphic");
+            thisOne.graphic_alt = result.getString("graphic_alt");
+            thisOne.sound_move = result.getString("sound_move");
+            thisOne.sound_move_alt = result.getString("sound_move_alt");
+            thisOne.sound_fight = result.getString("sound_fight");
+            //FIXME: 
+            //thisOne.sound_fight_alt = result.getString("sound_fight_alt"); 
+            thisOne.build_cost = result.getInt("build_cost");
+            thisOne.pop_cost = result.getInt("pop_cost");
+            thisOne.attack = result.getInt("attack");
+            thisOne.defense = result.getInt("defense");
+            thisOne.hitpoints = result.getInt("hitpoints");
+            thisOne.firepower = result.getInt("firepower");
+            //FIXME: 
+            //thisOne.move_rate = result.getInt("move_rate");
+            thisOne.vision_radius_sq = result.getInt("vision_radius_sq");
+            thisOne.transport_cap = result.getInt("transport_cap");
+            thisOne.fuel = result.getInt("fuel");
+            thisOne.uk_happy = result.getInt("uk_happy");
+            thisOne.uk_shield = result.getInt("uk_shield");
+            thisOne.uk_food = result.getInt("uk_food");
+            thisOne.uk_gold = result.getInt("uk_gold");
+            thisOne.flags = result.getString("flags");
+            thisOne.roles = result.getString("roles");
+            thisOne.helptext = result.getString("helptext");
+            
+            
+            }        
+        } catch (SQLException ex) {Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);}
+    return thisOne;
+    }
 
 void  addUnitUpgrades(java.awt.Choice _ioChoice, java.awt.List _ioList) throws SQLException{
     ResultSet result = statement.executeQuery("SELECT * FROM units");    //"SELECT * FROM units"

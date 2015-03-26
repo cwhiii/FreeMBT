@@ -83,9 +83,9 @@ void compileUnit(
     unitClass =  	_class; 
     tech_req =       	_techReq; 
     obsolete_by =    	_obsolete; 
-     graphic =       	_graphic; 
+    graphic =       	_graphic; 
     graphic_alt =    	_graphicAlt; 
-     sound_move =     	_soundMove; 
+    sound_move =     	_soundMove; 
     sound_move_alt =  	_soundMoveAlt; 
     sound_fight =    	_fight; 
     sound_fight_alt =  	_fightAlt; 
