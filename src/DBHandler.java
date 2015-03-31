@@ -132,16 +132,15 @@ Unit fetchUnitFromDB(String _name){
             thisOne.sound_move = result.getString("sound_move");
             thisOne.sound_move_alt = result.getString("sound_move_alt");
             thisOne.sound_fight = result.getString("sound_fight");
-            //FIXME: 
-            //thisOne.sound_fight_alt = result.getString("sound_fight_alt"); 
+            thisOne.sound_fight_alt = result.getString("sound_fight_alt"); 
             thisOne.build_cost = result.getInt("build_cost");
             thisOne.pop_cost = result.getInt("pop_cost");
             thisOne.attack = result.getInt("attack");
-            thisOne.defense = result.getInt("defense");
+            thisOne.defence = result.getInt("defense");
             thisOne.hitpoints = result.getInt("hitpoints");
             thisOne.firepower = result.getInt("firepower");
             //FIXME: 
-            //thisOne.move_rate = result.getInt("move_rate");
+            thisOne.move_rate = result.getInt("move_rate");
             thisOne.vision_radius_sq = result.getInt("vision_radius_sq");
             thisOne.transport_cap = result.getInt("transport_cap");
             thisOne.fuel = result.getInt("fuel");

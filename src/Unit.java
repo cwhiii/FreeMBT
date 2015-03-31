@@ -18,7 +18,7 @@ public class Unit {
     public int build_cost;    
     public int  pop_cost;      
     public int  attack;       
-    public int  defense;       
+    public int  defence;       
     public int  hitpoints;     
     public int  firepower;     
     public int  move_rate;     
@@ -87,7 +87,7 @@ public class Unit {
         build_cost =        _buildCost; 
         pop_cost =          _popCost; 
         attack =            _atk; 
-        defense =           _def; 
+        defence =           _def; 
         hitpoints =         _hp; 
         firepower =         _fp; 
         move_rate =         _move; 
@@ -121,7 +121,7 @@ String buildFullString(){
     fullString +=  build_cost;    
     fullString +=  pop_cost;      
     fullString +=  attack;       
-    fullString +=  defense;       
+    fullString +=  defence;       
     fullString +=  hitpoints;     
     fullString +=  firepower;     
     fullString +=  move_rate;     
@@ -157,7 +157,7 @@ String getValuesAsCSV(){
     allFieldsAsCSV +=  "'" + Integer.toString(build_cost) +  "', ";    
     allFieldsAsCSV +=  "'" + Integer.toString(pop_cost) +  "', ";      
     allFieldsAsCSV +=  "'" + Integer.toString(attack) +  "', ";       
-    allFieldsAsCSV +=  "'" + Integer.toString(defense) +  "', ";       
+    allFieldsAsCSV +=  "'" + Integer.toString(defence) +  "', ";       
     allFieldsAsCSV +=  "'" + Integer.toString(hitpoints) +  "', ";     
     allFieldsAsCSV +=  "'" + Integer.toString(firepower) +  "', ";     
     allFieldsAsCSV +=  "'" + Integer.toString(move_rate) +  "', ";     
@@ -181,35 +181,34 @@ String getValuesAsCSV(){
 String getFieldsAsView(){
     String fieldsViewString = "";
     
-    fieldsViewString=   id + "\n";   
-    //FIXME: Name not showing up in Display Area.s
-    fieldsViewString+=  unitName + "\n";   
-    fieldsViewString+=  unitClass + "\n";   
-    fieldsViewString+=  tech_req + "\n";   
-    fieldsViewString+=  obsolete_by + "\n";   
-    fieldsViewString+=  graphic + "\n";      
-    fieldsViewString+=  graphic_alt + "\n";   
-    fieldsViewString+=  sound_move + "\n";    
-    fieldsViewString+=  sound_move_alt + "\n"; 
-    fieldsViewString+=  sound_fight + "\n";   
-    fieldsViewString+=  sound_fight_alt + "\n"; 
-    fieldsViewString+=  Integer.toString(build_cost) + "\n";    
-    fieldsViewString+=  Integer.toString(pop_cost) + "\n";      
-    fieldsViewString+=  Integer.toString(attack) + "\n";       
-    fieldsViewString+=  Integer.toString(defense) + "\n";       
-    fieldsViewString+=  Integer.toString(hitpoints) + "\n";     
-    fieldsViewString+=  Integer.toString(firepower) + "\n";     
-    fieldsViewString+=  Integer.toString(move_rate) + "\n";     
-    fieldsViewString+=  Integer.toString(vision_radius_sq) + "\n"; 
-    fieldsViewString+=  Integer.toString(transport_cap) + "\n"; 
-    fieldsViewString+=  Integer.toString(fuel) + "\n";          
-    fieldsViewString+=  Integer.toString(uk_happy) + "\n";      
-    fieldsViewString+=  Integer.toString(uk_shield) + "\n";     
-    fieldsViewString+=  Integer.toString(uk_food) + "\n";     
-    fieldsViewString+=  Integer.toString(uk_gold) + "\n";       
-    fieldsViewString+=  flags + "\n";   
-    fieldsViewString+=  roles + "\n";   
-    fieldsViewString+=  helptext;
+    fieldsViewString  =   id + "\n";   
+    fieldsViewString +=  unitName + "\n";   
+    fieldsViewString +=  unitClass + "\n";   
+    fieldsViewString +=  tech_req + "\n";   
+    fieldsViewString +=  obsolete_by + "\n";   
+    fieldsViewString +=  graphic + "\n";      
+    fieldsViewString +=  graphic_alt + "\n";   
+    fieldsViewString +=  sound_move + "\n";    
+    fieldsViewString +=  sound_move_alt + "\n"; 
+    fieldsViewString +=  sound_fight + "\n";   
+    fieldsViewString +=  sound_fight_alt + "\n"; 
+    fieldsViewString +=  Integer.toString(build_cost) + "\n";    
+    fieldsViewString +=  Integer.toString(pop_cost) + "\n";      
+    fieldsViewString +=  Integer.toString(attack) + "\n";       
+    fieldsViewString +=  Integer.toString(defence) + "\n";       
+    fieldsViewString +=  Integer.toString(hitpoints) + "\n";     
+    fieldsViewString +=  Integer.toString(firepower) + "\n";     
+    fieldsViewString +=  Integer.toString(move_rate) + "\n";     
+    fieldsViewString +=  Integer.toString(vision_radius_sq) + "\n"; 
+    fieldsViewString +=  Integer.toString(transport_cap) + "\n"; 
+    fieldsViewString +=  Integer.toString(fuel) + "\n";          
+    fieldsViewString +=  Integer.toString(uk_happy) + "\n";      
+    fieldsViewString +=  Integer.toString(uk_shield) + "\n";     
+    fieldsViewString +=  Integer.toString(uk_food) + "\n";     
+    fieldsViewString +=  Integer.toString(uk_gold) + "\n";       
+    fieldsViewString +=  flags + "\n";   
+    fieldsViewString +=  roles + "\n";   
+    fieldsViewString +=  helptext;
 
     return fieldsViewString;
     }

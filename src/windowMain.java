@@ -65,7 +65,7 @@ public class windowMain extends javax.swing.JFrame {
         unit_upkeepShield2 = new javax.swing.JLabel();
         unit_upkeepHappy2 = new javax.swing.JLabel();
         unit_upkeepHappy = new javax.swing.JTextField();
-        unit_Gold = new javax.swing.JTextField();
+        unit_upkeepGold = new javax.swing.JTextField();
         unit_upkeepShield = new javax.swing.JTextField();
         unit_upkeepFood = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
@@ -413,10 +413,10 @@ public class windowMain extends javax.swing.JFrame {
             }
         });
 
-        unit_Gold.setText("2");
-        unit_Gold.addActionListener(new java.awt.event.ActionListener() {
+        unit_upkeepGold.setText("2");
+        unit_upkeepGold.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unit_GoldActionPerformed(evt);
+                unit_upkeepGoldActionPerformed(evt);
             }
         });
 
@@ -450,7 +450,7 @@ public class windowMain extends javax.swing.JFrame {
                     .addComponent(unit_upkeepHappy)
                     .addComponent(unit_upkeepShield)
                     .addComponent(unit_upkeepFood)
-                    .addComponent(unit_Gold, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                    .addComponent(unit_upkeepGold, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -471,7 +471,7 @@ public class windowMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(unit_Gold2)
-                    .addComponent(unit_Gold, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(unit_upkeepGold, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -666,7 +666,7 @@ public class windowMain extends javax.swing.JFrame {
                     .addComponent(unit_moveSoundAlt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(unit_graphicAlt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(unit_fightSoundAlt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1169,9 +1169,8 @@ public class windowMain extends javax.swing.JFrame {
                         .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(UnitsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, UnitsInputPanelLayout.createSequentialGroup()
@@ -2245,7 +2244,8 @@ public class windowMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void button_BuildUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BuildUnitActionPerformed
-        System.out.println("Building Unit: "+unit_ID+"...");
+        System.out.println("Attempting to build unit: "+unit_ID.getText()+"...");
+        
         Unit uni1 = new Unit(
                 unit_ID.getText(),
                 unit_name.getText(),
@@ -2271,7 +2271,7 @@ public class windowMain extends javax.swing.JFrame {
                 Integer.parseInt(unit_upkeepHappy.getText()),              
                 Integer.parseInt(unit_upkeepShield.getText()),              
                 Integer.parseInt(unit_upkeepFood.getText()),             
-                Integer.parseInt(unit_Gold.getText()),             
+                Integer.parseInt(unit_upkeepGold.getText()),             
                 "Filler: Flags",          //unit_flags.getText(),
                 "Filler: Roles",          //unit_roles.getText(),
                 unit_help.getText()
@@ -2314,7 +2314,7 @@ public class windowMain extends javax.swing.JFrame {
                 Integer.parseInt(unit_upkeepHappy.getText()),              
                 Integer.parseInt(unit_upkeepShield.getText()),              
                 Integer.parseInt(unit_upkeepFood.getText()),              
-                Integer.parseInt(unit_Gold.getText()),              
+                Integer.parseInt(unit_upkeepGold.getText()),              
                 "Filler: Flags",          //unit_flags.getText(),
                 "Filler: Roles",          //unit_roles.getText(),
                 unit_help.getText()
@@ -2334,10 +2334,55 @@ public class windowMain extends javax.swing.JFrame {
             unitDisplayCase.setText(null);
             DBHandler db = new DBHandler();
             //Fill  display area.
-            unitDisplayCase.append(db.fetchUnitFromDB(unitPickList.getSelectedItem()).getFieldsAsView());
+            Unit currentUnit = db.fetchUnitFromDB(unitPickList.getSelectedItem());
+            unitDisplayCase.append(currentUnit.getFieldsAsView());
             
             //TODO: Load all the fields with the data for the currently selected unit.
             //YAHere
+            unit_ID.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).id);
+            unit_name.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).unitName);
+            unit_ID.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).id);
+            unit_class.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).unitClass);
+            //TODO: Handle dropdowns rather than text fields.
+                //unit_requiredTech.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).id);
+                //unit_obsoleteBy.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).id);
+            unit_graphic.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).graphic);
+            unit_graphicAlt.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).graphic_alt);
+            unit_moveSound.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).sound_move);
+            unit_moveSoundAlt.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).sound_move_alt);
+            unit_fightSound.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).sound_fight);
+            unit_fightSoundAlt.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).sound_fight_alt);
+            unit_cost.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).build_cost));
+            unit_popCost.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).pop_cost));
+            unit_attack.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).attack));
+            unit_defence.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).defence));
+            unit_hp.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).firepower));
+            unit_firepower.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).firepower));
+            unit_upkeepHappy.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).uk_happy));
+            unit_upkeepShield.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).uk_shield));
+            unit_upkeepFood.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).uk_food));
+            unit_upkeepGold.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).uk_gold));
+            unit_move.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).move_rate));
+            unit_vision.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).vision_radius_sq));
+            unit_fuel.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).fuel));
+            unit_transportCap.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).transport_cap));
+            //TODO: 
+                // Fetch checkbox info for cargo types
+                // unit_ID.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).id));
+                // unit_ID.setText(Integer.toString(db.fetchUnitFromDB(unitPickList.getSelectedItem()).id));
+            unit_help.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).helptext);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                    
             
         } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
     }//GEN-LAST:event_unitPickListActionPerformed
@@ -2470,9 +2515,9 @@ public class windowMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_unit_upkeepShieldActionPerformed
 
-    private void unit_GoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_GoldActionPerformed
+    private void unit_upkeepGoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_upkeepGoldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_unit_GoldActionPerformed
+    }//GEN-LAST:event_unit_upkeepGoldActionPerformed
 
     private void unit_upkeepHappyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_upkeepHappyActionPerformed
         // TODO add your handling code here:
@@ -2760,7 +2805,6 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JCheckBox unitIsTransport;
     private java.awt.List unitPickList;
     private javax.swing.JPanel unitTransportPanel;
-    private javax.swing.JTextField unit_Gold;
     private javax.swing.JLabel unit_Gold2;
     private java.awt.TextField unit_ID;
     private javax.swing.JTextField unit_attack;
@@ -2789,6 +2833,7 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JLabel unit_transportCargo;
     private javax.swing.JTextField unit_upkeepFood;
     private javax.swing.JLabel unit_upkeepFood3;
+    private javax.swing.JTextField unit_upkeepGold;
     private javax.swing.JTextField unit_upkeepHappy;
     private javax.swing.JLabel unit_upkeepHappy2;
     private javax.swing.JTextField unit_upkeepShield;

@@ -352,10 +352,8 @@
                                       <Component id="jPanel8" max="32767" attributes="0"/>
                                       <Component id="jPanel9" max="32767" attributes="0"/>
                                       <Component id="jPanel5" alignment="0" min="-2" pref="480" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jPanel7" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jPanel7" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Component id="jPanel4" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -577,7 +575,7 @@
                                       <Component id="unit_upkeepHappy" alignment="0" max="32767" attributes="0"/>
                                       <Component id="unit_upkeepShield" alignment="0" max="32767" attributes="0"/>
                                       <Component id="unit_upkeepFood" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="unit_Gold" alignment="0" pref="200" max="32767" attributes="0"/>
+                                      <Component id="unit_upkeepGold" alignment="0" pref="200" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="176" max="32767" attributes="0"/>
                               </Group>
@@ -604,7 +602,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="unit_Gold2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="unit_Gold" min="-2" max="-2" attributes="0"/>
+                                      <Component id="unit_upkeepGold" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -640,12 +638,12 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="unit_upkeepHappyActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="unit_Gold">
+                        <Component class="javax.swing.JTextField" name="unit_upkeepGold">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="2"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="unit_GoldActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="unit_upkeepGoldActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="unit_upkeepShield">
@@ -893,7 +891,7 @@
                                       <Component id="unit_graphicAlt" alignment="0" max="32767" attributes="0"/>
                                       <Component id="unit_fightSoundAlt" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
