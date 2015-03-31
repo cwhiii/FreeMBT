@@ -123,6 +123,7 @@ Unit fetchUnitFromDB(String _name){
         ResultSet result = statement.executeQuery("SELECT * FROM units WHERE name = '" + _name + "'");    
         while(result.next()){
             thisOne.id = result.getString("id");
+            thisOne.unitName = result.getString("name");
             thisOne.unitClass = result.getString("class");
             thisOne.tech_req = result.getString("tech_req");
             thisOne.obsolete_by = result.getString("obsolete_by");
