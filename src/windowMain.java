@@ -238,6 +238,9 @@ public class windowMain extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         button_BuildUnit = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -1913,6 +1916,38 @@ public class windowMain extends javax.swing.JFrame {
 
         jTabbedPane12.addTab("Unit Tools", jPanel2);
 
+        jLabel19.setText("Location of dateabase");
+
+        jTextField1.setText("C:\\\\Users\\\\cwhiii\\\\Dropbox\\\\Projects\\\\Freeciv\\\\FreeMBT\\\\output\\\\freembt.sqlite");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel19)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(624, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(649, Short.MAX_VALUE))
+        );
+
+        jTabbedPane12.addTab("Options", jPanel10);
+
         jButton1.setText("Save");
 
         button_BuildUnit.setText("Build Unit");
@@ -2244,7 +2279,7 @@ public class windowMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void button_BuildUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BuildUnitActionPerformed
-        System.out.println("Attempting to build unit: "+unit_ID.getText()+"...");
+        System.out.println("Attempting to build unit: "+unit_name.getText()+"...");
         
         Unit uni1 = new Unit(
                 unit_ID.getText(),
@@ -2278,9 +2313,27 @@ public class windowMain extends javax.swing.JFrame {
             );
     try {
         DBHandler db = new DBHandler();
+        // Check if unit exists.
+        if(db.unitExists(unit_name.getText())){
+            System.out.println("Woah! Hold up there friend, we already have one of those.");
+            }
+        else {
+            //YAHere
+            // If no unit with this name, make a new one.
+            System.out.println("Not sure where you got that idea, but I guess we can give it a try.");
+            db.buildAUnit(uni1);
+            }
+        //FIXME: If I remove this, the one above stops working as well...
+        //But when this one is here, they *both* work.
+        // Even on a fail, it's still spitting out, "db.buildAUnit(): Values are:"
+        uni1.unitName = "Double Trouble";
         db.buildAUnit(uni1);
-        } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
         
+        
+        
+        
+        
+        } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
     refreshUnitsLists();
     }//GEN-LAST:event_button_BuildUnitActionPerformed
 
@@ -2338,7 +2391,7 @@ public class windowMain extends javax.swing.JFrame {
             unitDisplayCase.append(currentUnit.getFieldsAsView());
             
             //TODO: Load all the fields with the data for the currently selected unit.
-            //YAHere
+            
             unit_ID.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).id);
             unit_name.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).unitName);
             unit_ID.setText(db.fetchUnitFromDB(unitPickList.getSelectedItem()).id);
@@ -2557,6 +2610,12 @@ public class windowMain extends javax.swing.JFrame {
             unit_transportCap.setVisible(false);
         }
     }//GEN-LAST:event_unitIsTransportStateChanged
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+        //FIXME: Fetch and remove  double backspaces.
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
     void refreshUnitsLists(){
     System.out.println("Populating Units for all slections...");
         try {
@@ -2676,6 +2735,7 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel23;
@@ -2755,6 +2815,7 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel15;
@@ -2775,6 +2836,7 @@ public class windowMain extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane12;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField26;
