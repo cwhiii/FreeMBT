@@ -2323,14 +2323,7 @@ public class windowMain extends javax.swing.JFrame {
             System.out.println("Not sure where you got that idea, but I guess we can give it a try.");
             db.buildAUnit(uni1);
             }
-        //FIXME: If I remove this, the one above stops working as well...
-        //But when this one is here, they *both* work.
-        // Even on a fail, it's still spitting out, "db.buildAUnit(): Values are:"
-        uni1.unitName = "Double Trouble";
-        db.buildAUnit(uni1);
-        
-        
-        
+       
         
         
         } catch (SQLException ex) {Logger.getLogger(windowMain.class.getName()).log(Level.SEVERE, null, ex);}
